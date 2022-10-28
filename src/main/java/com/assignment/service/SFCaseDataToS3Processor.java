@@ -56,8 +56,9 @@ public class SFCaseDataToS3Processor {
 			// add the last result as well
 			List<Object> records = (List) result.get("records");
 			caseDetails.addAll(records);
-
+			// write all the case detail records as json string
 			String jsonCaseDetails = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(caseDetails);
+			// upload the json string to s3 bucket
 			String fileName = s3StorageService.uploadFile(jsonCaseDetails);
 
 			return "Process completed successfully, the case details have been saved at S3 location: " + fileName;
