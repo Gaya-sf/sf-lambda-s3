@@ -30,9 +30,6 @@ public class S3StorageService implements StorageService {
 
 	private AmazonS3 s3client;
 
-	@Value("${s3.endpointUrl}")
-	private String endpointUrl;
-
 	@Value("${s3.bucketName}")
 	private String bucketName;
 
@@ -75,7 +72,7 @@ public class S3StorageService implements StorageService {
 
 	private String generateFileName() {
 
-		return "case-details-" + LocalDateTime.now() + ".json";
+		return "cases/case-details-" + LocalDateTime.now() + ".json";
 	}
 
 	/**
